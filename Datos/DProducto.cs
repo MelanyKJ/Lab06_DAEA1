@@ -27,7 +27,7 @@ namespace Datos
                 connection.Open();
 
                 //Hago mi consulta
-                command = new SqlCommand("GetAllProducts", connection);
+                command = new SqlCommand("USP_GetProducto", connection);
                 command.CommandType = CommandType.StoredProcedure;
 
 
@@ -79,7 +79,7 @@ namespace Datos
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    SqlCommand command = new SqlCommand("Insert_Product", connection); 
+                    SqlCommand command = new SqlCommand("USP_InsertProducto", connection); 
                     command.CommandType = CommandType.StoredProcedure;
 
                     // Parámetros del procedimiento almacenado                
@@ -135,7 +135,7 @@ namespace Datos
                 parameters.Add(param3);
                 parameters.Add(param4);
 
-                SqlHelper.ExecuteNonQuery(connectionString, "Update_Product", CommandType.StoredProcedure, parameters.ToArray());
+                SqlHelper.ExecuteNonQuery(connectionString, "USP_UpdateProducto", CommandType.StoredProcedure, parameters.ToArray());
             }
             catch (Exception ex)
             {
@@ -160,7 +160,7 @@ namespace Datos
 
                 parameters.Add(param1);
 
-                SqlHelper.ExecuteNonQuery(connectionString, "Delete_Product", CommandType.StoredProcedure, parameters.ToArray());
+                SqlHelper.ExecuteNonQuery(connectionString, "USP_DeleteProducto", CommandType.StoredProcedure, parameters.ToArray());
             }
             catch (Exception ex)
             {
